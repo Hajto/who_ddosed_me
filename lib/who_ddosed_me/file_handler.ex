@@ -12,6 +12,11 @@ defmodule WhoDdosedMe.FileHandler do
 
   def process_file(file, adapter) do
     file
-    |> Stream.map(&adapter.parser/1)
+    |> Stream.map(&adapter.parse/1)
+    |> Stream.filter(&result_cryterium/1)
+    |> Enum.to_list
   end
+
+  defp result_cryterium({:ok, _}), do: true
+  defp result_cryterium(_), do: false
 end

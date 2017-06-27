@@ -8,4 +8,8 @@ defmodule SSHAnalyzerAdapterTest do
     assert result.ip == "221.122.101.203"
     assert result.extras[:port] == "51041"
   end
+
+  test "fails to parse" do
+    assert {:error, _  } = WhoDdosedMe.SSHAnalyzerAdapter.parse("Wrong line")
+  end
 end
