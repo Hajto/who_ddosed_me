@@ -14,6 +14,7 @@ defmodule WhoDdosedMe.FileHandler do
     file
     |> Stream.map(&adapter.parse/1)
     |> Stream.filter(&result_cryterium/1)
+    |> Stream.map(fn {:ok, elem} -> elem end)
     |> Enum.to_list
   end
 
