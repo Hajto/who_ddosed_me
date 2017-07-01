@@ -1,6 +1,8 @@
 #Build artifacts
 who_ddosed_me
 
+.DS_Store
+
 #Often used by my as test out
 out
 
