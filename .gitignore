@@ -1,3 +1,9 @@
+#Build artifacts
+who_ddosed_me
+
+#Often used by my as test out
+out
+
 # The directory Mix will write compiled artifacts to.
 /_build
 

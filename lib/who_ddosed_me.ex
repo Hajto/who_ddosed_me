@@ -14,9 +14,10 @@ defmodule WhoDdosedMe do
       nil -> IO.puts("No adapter specified")
       adapter ->
         adapter_module = WhoDdosedMe.AnalyzerPort.adapter(adapter)
-        FileHandler.get_files_to_process
-        |> FileHandler.handle_file(adapter_module)
+        FileHandler.get_files_to_process()
+        |> FileHandler.handle_multiple_files(adapter_module)
     end
+    |> Enum.reduce(%{}, fn (map, acc) -> Map.merge(acc, map) end)
     |> Poison.encode!()
     |> IO.puts()
   end
