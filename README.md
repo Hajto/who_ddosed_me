@@ -1,20 +1,19 @@
-# WhoDdosedMe
+# Who DDoSed Me
 
-**TODO: Add description**
+Is a simple tool for analyzing system logs.
 
-## Installation
+# Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `who_ddosed_me` to your list of dependencies in `mix.exs`:
+Please download precompiled script or build from sources (make build).
 
-```elixir
-def deps do
-  [{:who_ddosed_me, "~> 0.1.0"}]
-end
+# Usage
+
+Please pipe files to scan into STDIN and specify `--adapter`. Currently only supported adapter is `sshlogin`.
+
+## Example
+
+```
+echo logs.txt | ./who_ddosed_me --async true --adapter sshlogin > out
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/who_ddosed_me](https://hexdocs.pm/who_ddosed_me).
-
-# who_ddosed_me
+It will analyze `logs.txt` and output data into out file.
