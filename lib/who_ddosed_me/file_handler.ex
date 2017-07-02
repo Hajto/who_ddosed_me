@@ -21,12 +21,14 @@ defmodule WhoDdosedMe.FileHandler do
 
   def process_file(file, adapter) do
     file
-    |> Stream.map(&adapter.parse/1)
-    |> Stream.filter(&result_cryterium/1)
-    |> Stream.map(fn {:ok, elem} -> elem end)
+    |> Flow.from_enumerable()
+    |> Flow.map(&adapter.parse/1)
+    |> Flow.filter(&result_cryterium/1)
+    |> Flow.map(fn {:ok, elem} -> elem end)
+    |> Flow.partition()
+    |> Flow.group_by(&(&1.ip))
+    |> Flow.map(&WhoDdosedMe.ScanResult.package_scan_result/1)
     |> Enum.to_list
-    |> Enum.group_by(&(&1.ip))
-    |> Enum.map(&WhoDdosedMe.ScanResult.package_scan_result/1)
   end
 
   defp result_cryterium({:ok, _}), do: true

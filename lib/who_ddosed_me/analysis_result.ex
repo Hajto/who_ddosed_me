@@ -7,8 +7,9 @@ defmodule WhoDdosedMe.ScanResult do
 
   def package_scan_result({ip,record}) do
     {extras, length } = extras = Enum.reduce(record, {[] , 0}, fn result, {acc, count} ->
-      { result.extras ++ acc, count + 1}
+      { [result.extra | acc], count + 1}
     end)
-    %WhoDdosedMe.AnalysisResult{ip:  ip, extras: extras , count:  length}
+
+    %WhoDdosedMe.AnalysisResult{ip:  ip, extras: extras, count:  length}
   end
 end
