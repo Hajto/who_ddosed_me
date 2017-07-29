@@ -31,7 +31,8 @@ defmodule WhoDdosedMe.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1"},
-      {:flow, "~> 0.11"}
+      {:flow, "~> 0.11"},
+      {:who_ddosed_me_core, git: "https://github.com/Hajto/who_ddosed_me_core.git"}
     ]
   end
 end
